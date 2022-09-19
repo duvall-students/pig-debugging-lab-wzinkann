@@ -9,8 +9,11 @@ public class Game {
 	private final int LOSER_ROLL = 1;
 	
 	public Game(){
-		Player player1 = new GUIPlayer();
-		Player player2 = new ComputerPlayer();
+//		Player player1 = new GUIPlayer();
+//		Player player2 = new ComputerPlayer();
+//		No need to initialize new player objects, already created above
+		player1 = new GUIPlayer();
+		player2 = new ComputerPlayer();
 		die = new Random();
 		spinner = new Spinner();
 	}
