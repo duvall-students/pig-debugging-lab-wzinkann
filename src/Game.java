@@ -5,7 +5,9 @@ public class Game {
 	private Player player2;
 	private Random die;
 	private Spinner spinner;
-	private final String LOSER_SPIN = "grunt";
+	// 6. loser string should be caps
+//	private final String LOSER_SPIN = "grunt";
+	private final String LOSER_SPIN = "GRUNT";
 	private final int LOSER_ROLL = 1;
 	
 	public Game(){
@@ -59,7 +61,9 @@ public class Game {
 				System.out.println("Lose a turn.");
 				return 0;
 			}
-			else if(spin == LOSER_SPIN.toUpperCase()){
+			if(spin == LOSER_SPIN.toUpperCase()){
+			// 7. should only be if not else if cause all of players points should be lost
+//			else if(spin == LOSER_SPIN.toUpperCase()){
 				System.out.println("Too bad!  Lose all your points.");
 				whoseTurn.resetScore();
 				return 0;

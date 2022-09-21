@@ -4,7 +4,12 @@ public class ComputerPlayer extends Player{
 	
 	public ComputerPlayer(){
 		super("R2D2");
+		// 5. assigned name here
+		String name = "R2D2";
+		myName = name;
 	}
+	
+	
 
 	@Override
 	/*
