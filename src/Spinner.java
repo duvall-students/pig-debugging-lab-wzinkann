@@ -21,7 +21,8 @@ public class Spinner {
 	 * based on the given probabilities.
 	 */
 	public String numToWord(double spinNumber){	
-		int index = 1;
+//		int index = 1;
+		int index = 0; // 2. index = 1 causes there to be an index OOB error occasionally.
 		double low = 0;
 		boolean done = false;
 		String result = "";
