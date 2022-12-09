@@ -5,12 +5,17 @@ public class Game {
 	private Player player2;
 	private Random die;
 	private Spinner spinner;
-	private final String LOSER_SPIN = "grunt";
+	// 6. loser string should be caps
+//	private final String LOSER_SPIN = "grunt";
+	private final String LOSER_SPIN = "GRUNT";
 	private final int LOSER_ROLL = 1;
 	
 	public Game(){
-		Player player1 = new GUIPlayer();
-		Player player2 = new ComputerPlayer();
+//		Player player1 = new GUIPlayer();
+//		Player player2 = new ComputerPlayer();
+//		1. No need to initialize new player objects, already created above, causes nullPointer Ex.
+		this.player1 = new GUIPlayer();
+		this.player2 = new ComputerPlayer();
 		die = new Random();
 		spinner = new Spinner();
 	}
@@ -48,17 +53,20 @@ public class Game {
 		boolean keepGoing = true;
 		printStartRoundMessage(whoseTurn);
 		while(keepGoing){
-			int roll = die.nextInt(7);
+//			int roll = die.nextInt(7);
+			int roll = die.nextInt(6) + 1; // 3. solves the die sometimes rolling 0
 			String spin = spinner.spin();
 			System.out.println(roll+ " "+ spin);
 			
-			if(roll == LOSER_ROLL){
-				System.out.println("Lose a turn.");
-				return 0;
-			}
-			else if(spin == LOSER_SPIN.toUpperCase()){
+			// 7. should check spin before roll so players points and turn should not be lost
+			if(spin == LOSER_SPIN.toUpperCase()){
 				System.out.println("Too bad!  Lose all your points.");
 				whoseTurn.resetScore();
+				return 0;
+				}
+			
+			if(roll == LOSER_ROLL){
+				System.out.println("Lose a turn.");
 				return 0;
 			}
 			else{
@@ -72,7 +80,8 @@ public class Game {
 	
 	// True if one of the players has won the game.
 	public boolean winner(){
-		return player1.hasWon() && player2.hasWon();
+		// 4. change to or cause we are checking if one of the plays won
+		return player1.hasWon() || player2.hasWon();
 	}
 	
 	/* 
